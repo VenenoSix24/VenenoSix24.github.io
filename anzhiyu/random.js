@@ -1,0 +1,3 @@
+var posts=["2025/08/16/AMD-Hackintosh-EFI/","2023/07/24/First-Post/","2025/08/16/Git-Advanced/","2025/08/16/Git-Base/","2025/08/16/Obsidian-Base/","2023/07/24/Recommend-001/","2024/08/16/autodeploy-hexo/","2025/08/16/VSCode-Base/","2023/07/27/blog-start/","2025/08/16/Obsidian-Advanced/","2025/08/24/edgeone-1/","2023/07/26/huawei-google/","2025/02/19/love-yourself/","2025/08/20/sp2cf/","2025/08/18/vitepress-1/","2025/08/18/vitepress-2/","2023/07/24/hello-world/","2024/10/22/efi-use-guild/","2025/08/18/vitepress-3/"];function toRandomPost(){
+    pjax.loadUrl('/'+posts[Math.floor(Math.random() * posts.length)]);
+  };

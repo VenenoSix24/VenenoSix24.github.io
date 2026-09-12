@@ -1,0 +1,531 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>从零到一，用 VitePress 打造你的个人网站（基础篇） | 烟花易逝🎇</title><meta name="keywords" content="教程,个人网站,VitePress,前端"><meta name="author" content="VenenoSix24"><meta name="copyright" content="VenenoSix24"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="从零到一，用 VitePress 打造你的个人网站（基础篇）"><meta name="application-name" content="从零到一，用 VitePress 打造你的个人网站（基础篇）"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="从零到一，用 VitePress 打造你的个人网站（基础篇）"><meta property="og:url" content="http://blog.776624.xyz/2025/08/18/vitepress-1/index.html"><meta property="og:site_name" content="烟花易逝🎇"><meta property="og:description" content="前言：寻找完美的个人网站解决方案 快：访问速度和本地开发速度都得快如闪电。 简：外观设计简约，内容为王。 易：更新内容就像写笔记一样简单，最好只用 Markdown。 省：能免费、方便地部署。  在对比了市面上众多方案后，我最终选择了 VitePress。它不仅完美契合我的所有要求，其“为内容而生”"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://s2.loli.net/2025/08/24/6Uqb34wAlZGRo18.png"><meta property="article:author" content="VenenoSix24"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://s2.loli.net/2025/08/24/6Uqb34wAlZGRo18.png"><meta name="description" content="前言：寻找完美的个人网站解决方案 快：访问速度和本地开发速度都得快如闪电。 简：外观设计简约，内容为王。 易：更新内容就像写笔记一样简单，最好只用 Markdown。 省：能免费、方便地部署。  在对比了市面上众多方案后，我最终选择了 VitePress。它不仅完美契合我的所有要求，其“为内容而生”"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://blog.776624.xyz/2025/08/18/vitepress-1/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//static.cloudflareinsights.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script defer="defer" data-pjax="data-pjax" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;ae5537986eb34394be9af021e5c42dc1&quot;}"></script><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: {"enable":true,"ck":"3FOGt62MnfRMs3Ee","LingQueMonitorID":"3JO52xcDvjCuEqru"},
+  greetingBox: {"enable":true,"default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: {"mode":"both","api":"https://img2color-go.vercel.app/api?img=","cover_change":true},
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"距离上次更新已经过去了","messageNext":"天，文章的内容可能已经过时。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: VenenoSix24","link":"链接: ","source":"来源: 烟花易逝🎇","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '烟花易逝🎇',
+  title: '从零到一，用 VitePress 打造你的个人网站（基础篇）',
+  postAI: '',
+  pageFillDescription: '前言：寻找完美的个人网站解决方案, 第一步：环境准备与项目初始化, 讨论：为什么推荐使用 PNPM？, 前置准备, 开始初始化, 安装 pnpm （可选）, 接下来开始安装 VitePress, 1. 创建项目目录, 2. 安装 VitePress 和 Vue, 3. 运行初始化向导, 4. 理解生成的文件结构, 5. 启动开发服务器！, 第二步：核心定制：打造你的专属首页 (docs/index.md), index.md 完整代码, 代码深度解析：如何修改成你的内容？, 第三步：全局配置 (.vitepress/config.mts), config.mts 完整代码, 配置解析与修改指南, 第四步：部署上线：让世界看到你的作品, 结语与下一步前言寻找完美的个人网站解决方案快访问速度和本地开发速度都得快如闪电简外观设计简约内容为王易更新内容就像写笔记一样简单最好只用省能免费方便地部署在对比了市面上众多方案后我最终选择了它不仅完美契合我的所有要求其为内容而生的哲学和开箱即用的精美主题更是让我一见倾心这篇教程将带你从零开始复刻我的个人作品集网站的完整搭建过程无论你是想建立个人品牌还是纯粹想记录自己的项目相信都能从中获益第一步环境准备与项目初始化讨论为什么推荐使用在初始化项目前我想先回答一个问题我该用哪个虽然是自带的包管理器但我在这篇教程中强烈推荐使用速度快通过一个全局存储来管理依赖避免了重复下载安装速度极快节省磁盘空间依赖文件通过硬链接或符号链接的方式链接到项目中极大减少了文件夹的体积简单来说更快更高效你可以通过来全局安装它前置准备及以上版本通过命令行界面访问的终端支持语法的编辑器推荐及其官方扩展开始初始化现在让我们正式开始安装可选本文使用进行搭建如果你使用等请自行修改全局安装如果尚未安装若出现以下提示这个错误是因为你尝试在系统目录安装全局包时没有足够的权限改用解决接下来开始安装创建项目目录首先为你的项目创建一个专属文件夹安装和现在我们将添加到项目中使用来获取的最新版本表示这是一个开发依赖注意是仅的软件包不要使用导入它并确保最新的包含或者更改相关文件的文件扩展名例如到更多详情请参考故障排除指南此外在异步上下文中可以使用代替运行初始化向导安装完成后我们可以直接运行附带的命令行设置向导来生成基础配置这个命令会启动一个交互式的向导请根据提示回答以下问题以下是我的选择你可以根据自己情况调整在目录下生成所有网站文件这是最佳实践你的网站标题一个开发者与创造者的数字空间你的网站描述使用功能强大的默认主题强烈推荐提供更好的类型检查和代码提示自动帮你添加等命令作为如果打算使用组件或进行自定义还应该明确地将安装为理解生成的文件结构向导执行完毕后你的项目目录看起来应该是这样的配置文件文章文章你的首页这是你网站的根目录所有的文件和公共资源都放在这里这是的大脑包含了所有的配置缓存和构建输出我们最常打交道的就是文件这就是网站的首页文件我们后续会重点美化它生成的页面会是这样可以通过访问默认情况下将其开发服务器缓存存储在中并将生产构建输出存储在中如果使用应该将它们添加到文件中也可以手动配置这些位置启动开发服务器初始化向导已经在你的文件中自动添加了如下脚本现在让我们启动它终端会显示一个本地服务地址通常是在浏览器中打开它一个崭新的基于最新版本的网站雏形就已经在你面前了这个流程不仅是官方推荐的也更加稳定和透明第二步核心定制打造你的专属首页的精髓在于通过的来驱动页面我们来把默认的首页彻底改造成的样子完整代码指定使用的首页布局个人名片区域一个开发者与创造者的数字空间热衷于探索技术边界构建实用且有趣的应用这里记录着我的思考实践与作品文件放在目录下开始探索页面内锚点链接了解更多指向关于我页面项目展示区域我去抢个座基于实现的图书馆预约抢座系统简化每日重复操作总之就是非常可爱一个高度可定制化的个人网站主页博客模板追求极致美观适配微星迫击炮主板与的黑苹果配置打瓦加密器一个有趣的文本加密工具使用打和瓦作为二进制来进行加解密代码深度解析如何修改成你的内容这段代码分为三个部分我们逐一解析作用这是最重要的指令它告诉这个页面不是普通文章请使用你内置的专门为首页设计的漂亮布局来渲染它个人名片区如何修改这是访客第一眼看到的内容请务必用心填写网站或你的名字你的身份或一句话座右铭更详细的描述展示你的技能和热情你的头像或注意你需要将图片文件如放入文件夹中目录下的所有文件最终都会被复制到网站根目录所以这里用来引用这是两个行为按钮这种以开头的链接是页面内锚点它会平滑滚动到页面中的元素位置这种以开头的链接是内部页面跳转它会跳转到这个页面项目展示区如何修改这里是你的作品集核心它是一个数组每个包裹起来的部分就是一个项目卡片要新增项目完整复制一个代码块粘贴到数组中然后修改内容要删除项目直接删掉对应的代码块可以是也可以是自定义图标代码非常灵活你的项目名称句核心介绍项目的跳转链接可以是仓库在线或任何你想展示的网址第三步全局配置如果说是网站的血肉那么或就是网站的灵魂它控制着导航社交链接页脚等全局元素完整代码一个开发者与创造者的数字空间配置会注入到的标签中添加网站图标主题配置首页关于关于内置了等图标配置解析与修改指南和这是网站的元信息对非常重要请务必修改成你自己的我在这里增加了一个的配置你需要准备一个文件并同样放在目录下顶部导航栏你可以根据需要增删条目比如如果你暂时没有文章页可以直接删掉文章这一行社交链接字段可以直接使用内置的平台名称它会自动渲染成对应的图标非常方便第四步部署上线让世界看到你的作品本地开发完成后就是激动人心的部署环节我们以为例它对的支持堪称完美推送到在上创建一个新的空仓库比如在你的本地项目文件夹中执行命令将代码推送到这个仓库一键导入登录点击选择然后选择你刚刚创建的仓库并导入会自动识别出这是一个项目并帮你填充好所有构建设置点击然后泡杯咖啡几分钟后构建完成会为你生成一个的域名现在全世界都可以访问你的网站了结语与下一步恭喜你从零开始你已经成功搭建并上线了一个专业美观且高性能的个人作品集网站的简洁与强大让整个过程如行云流水但这仅仅是个开始你还可以继续探索创建页面丰富你的个人介绍开始撰写文章在目录下创建你的第一篇博客探索的主题定制通过添加自定义来微调网站的颜色和字体深入阅读官方文档发掘更多高级功能希望这篇超详细的搭建记录能为你扫清障碍点燃你打造个人品牌的火花欢迎访问我的网站在这里插入你的网站链接和它的源码链接',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-09-12 06:13:08',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 8.1.2"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://pic.imgdb.cn/item/64bf7c681ddac507ccd68f97.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">烟花易逝🎇</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?id=13342783548&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="/img/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="/img/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/CDN/" style="font-size: 1.05rem;">CDN<sup>1</sup></a><a href="/tags/Cloudflare/" style="font-size: 1.05rem;">Cloudflare<sup>1</sup></a><a href="/tags/EFI/" style="font-size: 1.05rem;">EFI<sup>2</sup></a><a href="/tags/EdgeOne/" style="font-size: 1.05rem;">EdgeOne<sup>1</sup></a><a href="/tags/First/" style="font-size: 1.05rem;">First<sup>1</sup></a><a href="/tags/Git/" style="font-size: 1.05rem;">Git<sup>2</sup></a><a href="/tags/Github/" style="font-size: 1.05rem;">Github<sup>4</sup></a><a href="/tags/Google/" style="font-size: 1.05rem;">Google<sup>1</sup></a><a href="/tags/Hexo/" style="font-size: 1.05rem;">Hexo<sup>3</sup></a><a href="/tags/Markdown/" style="font-size: 1.05rem;">Markdown<sup>2</sup></a><a href="/tags/Obsidian/" style="font-size: 1.05rem;">Obsidian<sup>2</sup></a><a href="/tags/OpenCore/" style="font-size: 1.05rem;">OpenCore<sup>2</sup></a><a href="/tags/Spaceship/" style="font-size: 1.05rem;">Spaceship<sup>1</sup></a><a href="/tags/VSCode/" style="font-size: 1.05rem;">VSCode<sup>1</sup></a><a href="/tags/VitePress/" style="font-size: 1.05rem;">VitePress<sup>3</sup></a><a href="/tags/macOS/" style="font-size: 1.05rem;">macOS<sup>1</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/" style="font-size: 1.05rem;">个人网站<sup>5</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.05rem;">前端<sup>3</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 1.05rem;">域名<sup>1</sup></a><a href="/tags/%E5%B0%8F%E8%AE%B0/" style="font-size: 1.05rem;">小记<sup>1</sup></a><a href="/tags/%E6%88%90%E9%95%BF/" style="font-size: 1.05rem;">成长<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 1.05rem;">教程<sup>16</sup></a><a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 1.05rem;">日常<sup>1</sup></a><a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/" style="font-size: 1.05rem;">编辑器<sup>1</sup></a><a href="/tags/%E9%B8%BF%E8%92%99/" style="font-size: 1.05rem;">鸿蒙<sup>1</sup></a><a href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" style="font-size: 1.05rem;">黑苹果<sup>2</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">11</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/02/"><span class="card-archive-list-date">二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">十月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/08/"><span class="card-archive-list-date">八月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/" itemprop="url">实用教程</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>教程</span></a><a class="article-meta__tags" href="/tags/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>个人网站</span></a><a class="article-meta__tags" href="/tags/VitePress/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>VitePress</span></a><a class="article-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>前端</span></a></span></div></div><h1 class="post-title" itemprop="name headline">从零到一，用 VitePress 打造你的个人网站（基础篇）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-08-18T11:49:00.000Z" title="发表于 2025-08-18 11:49:00">2025-08-18</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-09-12T06:13:08.453Z" title="更新于 2026-09-12 06:13:08">2026-09-12</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">3.3k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="从零到一，用 VitePress 打造你的个人网站（基础篇）"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为山东"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>山东</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://s2.loli.net/2025/08/24/6Uqb34wAlZGRo18.png"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://blog.776624.xyz/2025/08/18/vitepress-1/"><header><a class="post-meta-categories" href="/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/" itemprop="url">实用教程</a><a href="/tags/%E6%95%99%E7%A8%8B/" tabindex="-1" itemprop="url">教程</a><a href="/tags/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/" tabindex="-1" itemprop="url">个人网站</a><a href="/tags/VitePress/" tabindex="-1" itemprop="url">VitePress</a><a href="/tags/%E5%89%8D%E7%AB%AF/" tabindex="-1" itemprop="url">前端</a><h1 id="CrawlerTitle" itemprop="name headline">从零到一，用 VitePress 打造你的个人网站（基础篇）</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">VenenoSix24</span><time itemprop="dateCreated datePublished" datetime="2025-08-18T11:49:00.000Z" title="发表于 2025-08-18 11:49:00">2025-08-18</time><time itemprop="dateCreated datePublished" datetime="2026-09-12T06:13:08.453Z" title="更新于 2026-09-12 06:13:08">2026-09-12</time></header><h2 id="前言：寻找完美的个人网站解决方案"><a href="#前言：寻找完美的个人网站解决方案" class="headerlink" title="前言：寻找完美的个人网站解决方案"></a><strong>前言：寻找完美的个人网站解决方案</strong></h2><ol>
+<li><strong>快</strong>：访问速度和本地开发速度都得快如闪电。</li>
+<li><strong>简</strong>：外观设计简约，内容为王。</li>
+<li><strong>易</strong>：更新内容就像写笔记一样简单，最好只用 Markdown。</li>
+<li><strong>省</strong>：能免费、方便地部署。</li>
+</ol>
+<p>在对比了市面上众多方案后，我最终选择了 <strong>VitePress</strong>。它不仅完美契合我的所有要求，其“为内容而生”的哲学和开箱即用的精美主题更是让我一见倾心。</p>
+<p>这篇教程将带你从零开始，复刻我的个人作品集网站 <strong>IvyLabs</strong> 的完整搭建过程。无论你是想建立个人品牌，还是纯粹想记录自己的项目，相信都能从中获益。</p>
+<hr>
+<h2 id="第一步：环境准备与项目初始化"><a href="#第一步：环境准备与项目初始化" class="headerlink" title="第一步：环境准备与项目初始化"></a><strong>第一步：环境准备与项目初始化</strong></h2><h3 id="讨论：为什么推荐使用-PNPM？"><a href="#讨论：为什么推荐使用-PNPM？" class="headerlink" title="讨论：为什么推荐使用 PNPM？"></a><strong>讨论：为什么推荐使用 PNPM？</strong></h3><p>在初始化项目前，我想先回答一个问题：“npm, yarn, pnpm 我该用哪个？”</p>
+<p>虽然 <code>npm</code> 是 Node.js 自带的包管理器，但我在这篇教程中<strong>强烈推荐使用 <code>pnpm</code></strong>。</p>
+<ul>
+<li><strong>速度快</strong>：<code>pnpm</code> 通过一个全局存储来管理依赖，避免了重复下载，安装速度极快。</li>
+<li><strong>节省磁盘空间</strong>：依赖文件通过硬链接或符号链接的方式链接到项目中，极大减少了 <code>node_modules</code> 文件夹的体积。</li>
+</ul>
+<p>简单来说，<code>pnpm</code> 更快、更高效。你可以通过 <code>npm install -g pnpm</code> 来全局安装它。</p>
+<h3 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a><strong>前置准备</strong></h3><ul>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/">Node.js</a> 18 及以上版本。</li>
+<li>通过命令行界面 (CLI) 访问 VitePress 的终端。</li>
+<li>支持  <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>  语法的编辑器。<ul>
+<li>推荐  <a target="_blank" rel="noopener" href="https://code.visualstudio.com/">VSCode</a>  及其<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=Vue.volar">官方 Vue 扩展</a>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="开始初始化"><a href="#开始初始化" class="headerlink" title="开始初始化"></a><strong>开始初始化</strong></h3><p>现在，让我们正式开始。</p>
+<h4 id="安装-pnpm-（可选）"><a href="#安装-pnpm-（可选）" class="headerlink" title="安装 pnpm （可选）"></a>安装 pnpm （可选）</h4><p>本文使用 <code>npnm</code> 进行搭建，如果你使用 <code>npm</code> <code>yarn</code> 等，请自行修改。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 全局安装 pnpm (如果尚未安装)</span></span><br><span class="line">npm install -g pnpm</span><br></pre></td></tr></table></figure>
+
+<p>若出现以下提示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">sixig@VenenoSix24deMac-Pro IvyLabs % npm install -g pnpm</span><br><span class="line">npm error code EACCES</span><br><span class="line">npm error syscall <span class="built_in">mkdir</span></span><br><span class="line">npm error path /usr/local/lib/node_modules/pnpm</span><br><span class="line">npm error errno -13</span><br><span class="line">npm error Error: EACCES: permission denied, <span class="built_in">mkdir</span> <span class="string">&#x27;/usr/local/lib/node_modules/pnpm&#x27;</span></span><br><span class="line">npm error     at async <span class="built_in">mkdir</span> (node:internal/fs/promises:852:10)</span><br><span class="line">npm error     at async /usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:624:20</span><br><span class="line">npm error     at async Promise.allSettled (index 0)</span><br><span class="line">npm error     at async [reifyPackages] (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:325:11)</span><br><span class="line">npm error     at async Arborist.reify (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:142:5)</span><br><span class="line">npm error     at async Install.<span class="built_in">exec</span> (/usr/local/lib/node_modules/npm/lib/commands/install.js:150:5)</span><br><span class="line">npm error     at async Npm.<span class="built_in">exec</span> (/usr/local/lib/node_modules/npm/lib/npm.js:207:9)</span><br><span class="line">npm error     at async module.exports (/usr/local/lib/node_modules/npm/lib/cli/entry.js:74:5) &#123;</span><br><span class="line">npm error   errno: -13,</span><br><span class="line">npm error   code: <span class="string">&#x27;EACCES&#x27;</span>,</span><br><span class="line">npm error   syscall: <span class="string">&#x27;mkdir&#x27;</span>,</span><br><span class="line">npm error   path: <span class="string">&#x27;/usr/local/lib/node_modules/pnpm&#x27;</span></span><br><span class="line">npm error &#125;</span><br><span class="line">npm error</span><br><span class="line">npm error The operation was rejected by your operating system.</span><br><span class="line">npm error It is likely you <span class="keyword">do</span> not have the permissions to access this file as the current user</span><br><span class="line">npm error</span><br><span class="line">npm error If you believe this might be a permissions issue, please double-check the</span><br><span class="line">npm error permissions of the file and its containing directories, or try running</span><br><span class="line">npm error the <span class="built_in">command</span> again as root/Administrator.</span><br><span class="line">npm error A complete <span class="built_in">log</span> of this run can be found <span class="keyword">in</span>: /Users/sixig/.npm/_logs/2025-08-18T04_20_57_761Z-debug-0.log</span><br></pre></td></tr></table></figure>
+
+<p>这个错误是因为你尝试在系统目录 (<code>/usr/local/lib/node_modules</code>) 安装全局包时没有足够的权限。</p>
+<blockquote>
+<p>改用 <code>sudo</code> 解决：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> npm install -g pnpm</span><br></pre></td></tr></table></figure>
+
+<h4 id="接下来开始安装-VitePress"><a href="#接下来开始安装-VitePress" class="headerlink" title="接下来开始安装 VitePress"></a>接下来开始安装 <code>VitePress</code></h4><h5 id="1-创建项目目录"><a href="#1-创建项目目录" class="headerlink" title="1. 创建项目目录"></a><strong>1. 创建项目目录</strong></h5><p>首先，为你的项目创建一个专属文件夹。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> IvyLabs</span><br><span class="line"><span class="built_in">cd</span> IvyLabs</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-安装-VitePress-和-Vue"><a href="#2-安装-VitePress-和-Vue" class="headerlink" title="2. 安装 VitePress 和 Vue"></a><strong>2. 安装 VitePress 和 Vue</strong></h5><p>现在，我们将 VitePress 添加到项目中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 @next 来获取 VitePress 的最新版本</span></span><br><span class="line"><span class="comment"># -D 表示这是一个开发依赖 (dev dependency)</span></span><br><span class="line">pnpm add -D vitepress@next</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>注意</strong>：VitePress 是仅 ESM 的软件包。不要使用  <code>require()</code>  导入它，并确保最新的  <code>package.json</code>  包含  <code>&quot;type&quot;: &quot;module&quot;</code>，或者更改相关文件的文件扩展名，例如  <code>.vitepress/config.js</code>  到  <code>.mjs</code>&#x2F;<code>.mts</code>。更多详情请参考  <a target="_blank" rel="noopener" href="http://vitejs.dev/guide/troubleshooting.html#this-package-is-esm-only">Vite 故障排除指南</a>。此外，在异步 CJS 上下文中，可以使用  <code>await import(&#39;vitepress&#39;)</code>  代替。</p>
+</blockquote>
+<h5 id="3-运行初始化向导"><a href="#3-运行初始化向导" class="headerlink" title="3. 运行初始化向导"></a><strong>3. 运行初始化向导</strong></h5><p>安装完成后，我们可以直接运行 VitePress 附带的命令行设置向导来生成基础配置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm vitepress init</span><br></pre></td></tr></table></figure>
+
+<p>这个命令会启动一个交互式的向导。请根据提示回答以下问题（以下是我的选择，你可以根据自己情况调整）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">┌  Welcome to VitePress!</span><br><span class="line">│</span><br><span class="line">◇  Where should VitePress initialize the config?</span><br><span class="line">│  ● ./docs  (在 docs 目录下生成所有网站文件，这是最佳实践)</span><br><span class="line">│</span><br><span class="line">◇ Where should VitePress look for your markdown files?</span><br><span class="line">│  ● ./docs</span><br><span class="line">│</span><br><span class="line">◇  Site title:</span><br><span class="line">│  ● IvyLabs (你的网站标题)</span><br><span class="line">│</span><br><span class="line">◇  Site description:</span><br><span class="line">│  ● 一个开发者与创造者的数字空间 (你的网站描述)</span><br><span class="line">│</span><br><span class="line">◇  Theme:</span><br><span class="line">│  ● Default Theme (使用功能强大的默认主题)</span><br><span class="line">│</span><br><span class="line">◇  Use TypeScript for config and theme files?</span><br><span class="line">│  ● Yes (强烈推荐！提供更好的类型检查和代码提示)</span><br><span class="line">│</span><br><span class="line">◇  Add VitePress npm scripts to package.json?</span><br><span class="line">│  ● Yes (自动帮你添加 &#x27;docs:dev&#x27; 等命令)</span><br><span class="line">│</span><br><span class="line">◇ Add a prefix for VitePress npm scripts?</span><br><span class="line">│  ● Yes</span><br><span class="line">│</span><br><span class="line">│ ◇ Prefix for VitePress npm scripts:</span><br><span class="line">│  ● docs</span><br><span class="line">│</span><br><span class="line">└  Done! Now run pnpm run docs:dev and start writing.</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Vue 作为 peer dependency</p>
+<p>如果打算使用 Vue 组件或 API 进行自定义，还应该明确地将  <code>vue</code>  安装为 dependency。</p>
+</blockquote>
+<h5 id="4-理解生成的文件结构"><a href="#4-理解生成的文件结构" class="headerlink" title="4. 理解生成的文件结构"></a><strong>4. 理解生成的文件结构</strong></h5><p>向导执行完毕后，你的项目目录看起来应该是这样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├─ docs</span><br><span class="line">│  ├─ .vitepress</span><br><span class="line">│  │  └─ config.mts             &lt;-- VitePress 配置文件</span><br><span class="line">│  ├─ api-examples.md           &lt;-- 文章1</span><br><span class="line">│  ├─ markdown-examples.md      &lt;-- 文章2</span><br><span class="line">│  └─ index.md                  &lt;-- 你的首页</span><br><span class="line">└─ package.json</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>docs</code>: 这是你网站的<strong>根目录</strong>，所有的 Markdown 文件和公共资源都放在这里。</li>
+<li><code>.vitepress</code>: 这是 VitePress 的“大脑”，包含了所有的配置、缓存和构建输出。我们最常打交道的就是 <code>config.mts</code> 文件。</li>
+<li><code>index.md</code>: 这就是网站的首页文件，我们后续会重点美化它。</li>
+</ul>
+<p>生成的 HTML 页面会是这样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">api-examples.md         --&gt;    /api-examples.html</span><br><span class="line">markdown-examples.md    --&gt;    /markdown-examples.html</span><br><span class="line">index.md                --&gt;    /index.html (可以通过 / 访问)</span><br></pre></td></tr></table></figure>
+
+
+<blockquote>
+<p><strong>TIP</strong></p>
+<p>默认情况下，VitePress 将其开发服务器缓存存储在  <code>.vitepress/cache</code>  中，并将生产构建输出存储在  <code>.vitepress/dist</code>  中。如果使用 Git，应该将它们添加到  <code>.gitignore</code>  文件中。也可以手动<a target="_blank" rel="noopener" href="https://vitepress.dev/zh/reference/site-config#outdir">配置</a>这些位置。</p>
+</blockquote>
+<h5 id="5-启动开发服务器！"><a href="#5-启动开发服务器！" class="headerlink" title="5. 启动开发服务器！"></a><strong>5. 启动开发服务器！</strong></h5><p>初始化向导已经在你的 <code>package.json</code> 文件中自动添加了如下脚本：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// package.json</span></span><br><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;docs:dev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vitepress dev docs&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;docs:build&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vitepress build docs&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;docs:preview&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vitepress preview docs&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>现在，让我们启动它！</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm run docs:dev</span><br></pre></td></tr></table></figure>
+
+<p>终端会显示一个本地服务地址，通常是 <code>http://localhost:5173</code>。在浏览器中打开它，一个崭新的、基于最新 VitePress 版本的网站雏形就已经在你面前了！这个流程不仅是官方推荐的，也更加稳定和透明。</p>
+<h2 id="第二步：核心定制：打造你的专属首页-docs-index-md"><a href="#第二步：核心定制：打造你的专属首页-docs-index-md" class="headerlink" title="第二步：核心定制：打造你的专属首页 (docs/index.md)"></a><strong>第二步：核心定制：打造你的专属首页 (<code>docs/index.md</code>)</strong></h2><p>VitePress 的精髓在于通过 Markdown 的 <code>YAML Frontmatter</code> 来驱动页面。我们来把默认的首页 <code>docs/index.md</code> 彻底改造成 IvyLabs 的样子。</p>
+<h3 id="index-md-完整代码"><a href="#index-md-完整代码" class="headerlink" title="index.md 完整代码"></a><strong><code>index.md</code> 完整代码</strong></h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="section"># 指定使用 VitePress 的首页布局</span></span><br><span class="line">layout: home</span><br><span class="line"></span><br><span class="line"><span class="section"># 个人名片区域 (Hero Section)</span></span><br><span class="line">hero:</span><br><span class="line">  name: &quot;IvyLabs&quot;</span><br><span class="line">  text: &quot;一个开发者与创造者的数字空间&quot;</span><br><span class="line">  tagline: 热衷于探索技术边界，构建实用且有趣的应用。这里记录着我的思考、实践与作品。</span><br><span class="line">  image:</span><br><span class="line"><span class="code">    src: /logo.svg # Logo 文件放在 docs/public/ 目录下</span></span><br><span class="line"><span class="code">    alt: IvyLabs Logo</span></span><br><span class="line"><span class="code">  actions:</span></span><br><span class="line"><span class="code">    - theme: brand</span></span><br><span class="line"><span class="code">      text: 开始探索</span></span><br><span class="line"><span class="code">      link: &#x27;#projects&#x27; # 页面内锚点链接</span></span><br><span class="line"><span class="code">    - theme: alt</span></span><br><span class="line"><span class="code">      text: 了解更多</span></span><br><span class="line"><span class="code">      link: &#x27;/about&#x27; # 指向 &quot;关于我&quot; 页面</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="section"># 项目展示区域 (Features Section)</span></span><br><span class="line">features:</span><br><span class="line"><span class="bullet">  -</span> icon: 🤖</span><br><span class="line"><span class="code">    title: 我去抢个座</span></span><br><span class="line"><span class="code">    details: 基于 Python 实现的图书馆预约抢座系统，简化每日重复操作。</span></span><br><span class="line"><span class="code">    link: &#x27;https://github.com/VenenoSix24/igolib-ldu&#x27;</span></span><br><span class="line"><span class="code">  - icon: 🌸</span></span><br><span class="line"><span class="code">    title: 总之就是非常可爱</span></span><br><span class="line"><span class="code">    details: 一个高度可定制化的个人网站/主页/博客模板，追求极致美观。</span></span><br><span class="line"><span class="code">    link: &#x27;https://github.com/VenenoSix24/kawaii-homepage&#x27;</span></span><br><span class="line"><span class="code">  - icon: 🍎</span></span><br><span class="line"><span class="code">    title: Hackintosh OC EFI</span></span><br><span class="line"><span class="code">    details: 适配微星 B350M 迫击炮主板与 AMD CPU/GPU 的黑苹果 OpenCore 配置。</span></span><br><span class="line"><span class="code">    link: &#x27;https://github.com/VenenoSix24/MSI-B350M-MORTAR-Hackintosh-OpenCore-EFI&#x27;</span></span><br><span class="line"><span class="code">  - icon: 🎲</span></span><br><span class="line"><span class="code">    title: 打瓦加密器</span></span><br><span class="line"><span class="code">    details: 一个有趣的文本加密工具，使用“打”和“瓦”作为二进制来进行加解密。</span></span><br><span class="line"><span class="code">    link: &#x27;https://github.com/VenenoSix24/DV-Encrypter&#x27;</span></span><br><span class="line"><span class="code">---</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="代码深度解析：如何修改成你的内容？"><a href="#代码深度解析：如何修改成你的内容？" class="headerlink" title="代码深度解析：如何修改成你的内容？"></a><strong>代码深度解析：如何修改成你的内容？</strong></h3><p>这段代码分为三个部分，我们逐一解析：</p>
+<ol>
+<li><p><strong><code>layout: home</code></strong></p>
+<ul>
+<li><strong>作用</strong>：这是最重要的指令。它告诉 VitePress：“这个页面不是普通文章，请使用你内置的、专门为首页设计的漂亮布局来渲染它”。</li>
+</ul>
+</li>
+<li><p><strong><code>hero</code> (个人名片区)</strong></p>
+<ul>
+<li><strong>如何修改</strong>：这是访客第一眼看到的内容，请务必用心填写。</li>
+<li><code>name</code>: 网站或你的名字。</li>
+<li><code>text</code>: 你的身份或一句话座右铭。</li>
+<li><code>tagline</code>: 更详细的描述，展示你的技能和热情。</li>
+<li><code>image</code>:<ul>
+<li><code>src</code>: 你的头像或 Logo。<strong>注意</strong>：你需要将图片文件（如 <code>logo.svg</code>）放入 <code>docs/public/</code> 文件夹中。<code>public</code> 目录下的所有文件最终都会被复制到网站根目录，所以这里用 <code>/logo.svg</code> 来引用。</li>
+</ul>
+</li>
+<li><code>actions</code>: 这是两个行为按钮。<ul>
+<li><code>link: &#39;#projects&#39;</code>: 这种以 <code>#</code> 开头的链接是<strong>页面内锚点</strong>。它会平滑滚动到页面中 <code>id=&quot;projects&quot;</code> 的元素位置。</li>
+<li><code>link: &#39;/about&#39;</code>: 这种以 <code>/</code> 开头的链接是<strong>内部页面跳转</strong>。它会跳转到 <code>docs/about.md</code> 这个页面。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong><code>features</code> (项目展示区)</strong></p>
+<ul>
+<li><strong>如何修改</strong>：这里是你的作品集核心。它是一个数组，每个 <code>{}</code> 包裹起来的部分就是一个项目卡片。</li>
+<li><strong>要新增项目</strong>：完整复制一个 <code>{}</code> 代码块，粘贴到数组中，然后修改内容。</li>
+<li><strong>要删除项目</strong>：直接删掉对应的 <code>{}</code> 代码块。</li>
+<li><code>icon</code>: 可以是 Emoji，也可以是自定义 SVG 图标代码，非常灵活。</li>
+<li><code>title</code>: 你的项目名称。</li>
+<li><code>details</code>: 1-2 句核心介绍。</li>
+<li><code>link</code>: 项目的跳转链接，可以是 GitHub 仓库、在线 Demo 或任何你想展示的网址。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="第三步：全局配置-vitepress-config-mts"><a href="#第三步：全局配置-vitepress-config-mts" class="headerlink" title="第三步：全局配置 (.vitepress/config.mts)"></a><strong>第三步：全局配置 (<code>.vitepress/config.mts</code>)</strong></h2><p>如果说 <code>index.md</code> 是网站的血肉，那么 <code>config.mts</code> (或 <code>.js</code>) 就是网站的灵魂。它控制着导航、社交链接、页脚等全局元素。</p>
+<h3 id="config-mts-完整代码"><a href="#config-mts-完整代码" class="headerlink" title="config.mts 完整代码"></a><strong><code>config.mts</code> 完整代码</strong></h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;vitepress&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// https://vitepress.dev/reference/site-config</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">title</span>: <span class="string">&quot;IvyLabs&quot;</span>,</span><br><span class="line">  <span class="attr">description</span>: <span class="string">&quot;一个开发者与创造者的数字空间&quot;</span>,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// head 配置，会注入到 HTML 的 &lt;head&gt; 标签中</span></span><br><span class="line">  <span class="attr">head</span>: [</span><br><span class="line">    <span class="comment">// 添加网站图标 (favicon)</span></span><br><span class="line">    [<span class="string">&#x27;link&#x27;</span>, &#123; <span class="attr">rel</span>: <span class="string">&#x27;icon&#x27;</span>, <span class="attr">href</span>: <span class="string">&#x27;/favicon.ico&#x27;</span> &#125;]</span><br><span class="line">  ],</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 主题配置</span></span><br><span class="line">  <span class="attr">themeConfig</span>: &#123;</span><br><span class="line">    <span class="comment">// https://vitepress.dev/reference/default-theme-config</span></span><br><span class="line">    <span class="attr">nav</span>: [</span><br><span class="line">      &#123; <span class="attr">text</span>: <span class="string">&#x27;首页&#x27;</span>, <span class="attr">link</span>: <span class="string">&#x27;/&#x27;</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">text</span>: <span class="string">&#x27;关于&#x27;</span>, <span class="attr">link</span>: <span class="string">&#x27;/markdown-examples&#x27;</span> &#125;</span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    <span class="attr">sidebar</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="attr">text</span>: <span class="string">&#x27;关于&#x27;</span>,</span><br><span class="line">        <span class="attr">items</span>: [</span><br><span class="line">          &#123; <span class="attr">text</span>: <span class="string">&#x27;Markdown Examples&#x27;</span>, <span class="attr">link</span>: <span class="string">&#x27;/markdown-examples&#x27;</span> &#125;,</span><br><span class="line">          &#123; <span class="attr">text</span>: <span class="string">&#x27;Runtime API Examples&#x27;</span>, <span class="attr">link</span>: <span class="string">&#x27;/api-examples&#x27;</span> &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    <span class="attr">socialLinks</span>: [</span><br><span class="line">    <span class="comment">// VitePress 内置了 github, twitter, discord, facebook, youtube 等图标</span></span><br><span class="line">      &#123; <span class="attr">icon</span>: <span class="string">&#x27;github&#x27;</span>, <span class="attr">link</span>: <span class="string">&#x27;https://github.com/VenenoSix24&#x27;</span> &#125;</span><br><span class="line">    ],</span><br><span class="line"></span><br><span class="line">    <span class="attr">footer</span>: &#123;</span><br><span class="line">      <span class="attr">message</span>: <span class="string">&#x27;Released under the MIT License.&#x27;</span>,</span><br><span class="line">      <span class="attr">copyright</span>: <span class="string">&#x27;Copyright © 2020-present IvyLabs&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置解析与修改指南"><a href="#配置解析与修改指南" class="headerlink" title="配置解析与修改指南"></a><strong>配置解析与修改指南</strong></h3><ul>
+<li><code>title</code> 和 <code>description</code>: 这是网站的元信息，对 SEO 非常重要，请务必修改成你自己的。</li>
+<li><code>head</code>: 我在这里增加了一个 <code>favicon</code> 的配置。你需要准备一个 <code>favicon.ico</code> 文件并同样放在 <code>docs/public/</code> 目录下。</li>
+<li><code>themeConfig.nav</code>: 顶部导航栏。你可以根据需要增删条目。比如，如果你暂时没有“文章”页，可以直接删掉 <code>{ text: &#39;文章&#39;, link: &#39;/articles/&#39; }</code> 这一行。</li>
+<li><code>themeConfig.socialLinks</code>: 社交链接。<code>icon</code> 字段可以直接使用 VitePress 内置的平台名称，它会自动渲染成对应的图标，非常方便。</li>
+</ul>
+<hr>
+<h2 id="第四步：部署上线：让世界看到你的作品"><a href="#第四步：部署上线：让世界看到你的作品" class="headerlink" title="第四步：部署上线：让世界看到你的作品"></a><strong>第四步：部署上线：让世界看到你的作品</strong></h2><p>本地开发完成后，就是激动人心的部署环节。我们以 Vercel 为例，它对 VitePress 的支持堪称完美。</p>
+<ol>
+<li><p><strong>推送到 GitHub</strong>：</p>
+<ul>
+<li>在 GitHub 上创建一个新的空仓库（比如 <code>IvyLabs</code>）。</li>
+<li>在你的本地项目文件夹中，执行 Git 命令，将代码推送到这个仓库。</li>
+</ul>
+</li>
+<li><p><strong>Vercel 一键导入</strong>：</p>
+<ul>
+<li>登录 Vercel，点击 “Add New… -&gt; Project”。</li>
+<li>选择 “Continue with Git”，然后选择你刚刚创建的 GitHub 仓库并导入。</li>
+<li>Vercel 会自动识别出这是一个 VitePress 项目，并帮你填充好所有构建设置（<code>Framework Preset: VitePress</code>）。</li>
+<li>点击 “Deploy”，然后泡杯咖啡。</li>
+</ul>
+</li>
+</ol>
+<p>几分钟后，构建完成，Vercel 会为你生成一个 <code>.vercel.app</code> 的域名。现在，全世界都可以访问你的网站了！</p>
+<hr>
+<h2 id="结语与下一步"><a href="#结语与下一步" class="headerlink" title="结语与下一步"></a><strong>结语与下一步</strong></h2><p>恭喜你！从零开始，你已经成功搭建并上线了一个专业、美观且高性能的个人作品集网站。VitePress 的简洁与强大，让整个过程如行云流水。</p>
+<p>但这仅仅是个开始，你还可以继续探索：</p>
+<ul>
+<li><strong>创建 <code>docs/about.md</code> 页面</strong>，丰富你的个人介绍。</li>
+<li><strong>开始撰写文章</strong>，在 <code>docs/articles/</code> 目录下创建你的第一篇博客。</li>
+<li><strong>探索 VitePress 的主题定制</strong>，通过添加自定义 CSS 来微调网站的颜色和字体。</li>
+<li><strong>深入阅读 <a target="_blank" rel="noopener" href="https://vitepress.dev/">VitePress 官方文档</a></strong>，发掘更多高级功能。</li>
+</ul>
+<p>希望这篇超详细的搭建记录能为你扫清障碍，点燃你打造个人品牌的火花。欢迎访问我的网站 <strong>IvyLabs</strong> [在这里插入你的网站链接] 和它的 [GitHub 源码链接]！</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic.imgdb.cn/item/64bf7c681ddac507ccd68f97.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic.imgdb.cn/item/64bf7c681ddac507ccd68f97.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">VenenoSix24</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://blog.776624.xyz/2025/08/18/vitepress-1/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://blog.776624.xyz/2025/08/18/vitepress-1/')">从零到一，用 VitePress 打造你的个人网站（基础篇）</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://blog.776624.xyz/2025/08/18/vitepress-1/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=从零到一，用 VitePress 打造你的个人网站（基础篇）&amp;url=http://blog.776624.xyz/2025/08/18/vitepress-1/&amp;pic=https://s2.loli.net/2025/08/24/6Uqb34wAlZGRo18.png" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.776624.xyz" target="_blank">烟花易逝🎇</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E6%95%99%E7%A8%8B/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>教程<span class="tagsPageCount">16</span></a><a class="post-meta__box__tags" href="/tags/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>个人网站<span class="tagsPageCount">5</span></a><a class="post-meta__box__tags" href="/tags/VitePress/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>VitePress<span class="tagsPageCount">3</span></a><a class="post-meta__box__tags" href="/tags/%E5%89%8D%E7%AB%AF/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>前端<span class="tagsPageCount">3</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2025/08/24/7ocaW2EHfjxYd56.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/08/16/AMD-Hackintosh-EFI/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/13/xZ5RYIHwJyMTSoe.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">AMD 平台福音：微星 B350M 迫击炮主板黑苹果实践指南 (macOS Sequoia)</div></div></a></div><div class="next-post pull-right"><a href="/2025/08/18/vitepress-2/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/24/6Uqb34wAlZGRo18.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">从零到一，用 VitePress 打造你的个人网站（页面篇）</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/08/18/vitepress-2/" title="从零到一，用 VitePress 打造你的个人网站（页面篇）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/24/6Uqb34wAlZGRo18.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-18</div><div class="title">从零到一，用 VitePress 打造你的个人网站（页面篇）</div></div></a></div><div><a href="/2025/08/18/vitepress-3/" title="从零到一，用 VitePress 打造你的个人网站（Frontmatter 篇）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/24/6Uqb34wAlZGRo18.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-18</div><div class="title">从零到一，用 VitePress 打造你的个人网站（Frontmatter 篇）</div></div></a></div><div><a href="/2025/08/24/edgeone-1/" title="腾讯云 EdgeOne CDN 加速 基础配置教程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/24/7ocaW2EHfjxYd56.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-24</div><div class="title">腾讯云 EdgeOne CDN 加速 基础配置教程</div></div></a></div><div><a href="/2025/08/20/sp2cf/" title="将 Spaceship 域名托管到 Cloudflare"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/20/QunlcdOxZYgEBms.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-20</div><div class="title">将 Spaceship 域名托管到 Cloudflare</div></div></a></div><div><a href="/2025/08/16/AMD-Hackintosh-EFI/" title="AMD 平台福音：微星 B350M 迫击炮主板黑苹果实践指南 (macOS Sequoia)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/13/xZ5RYIHwJyMTSoe.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-16</div><div class="title">AMD 平台福音：微星 B350M 迫击炮主板黑苹果实践指南 (macOS Sequoia)</div></div></a></div><div><a href="/2025/08/16/Git-Advanced/" title="团队协作 Git 工作流：理解并实践 GitHub Flow"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/16/v7nGNOYtFdUK2bS.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-16</div><div class="title">团队协作 Git 工作流：理解并实践 GitHub Flow</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic.imgdb.cn/item/64bf7c681ddac507ccd68f97.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description"><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">这有关于<b style="color:#fff">产品、设计、开发</b>相关的问题和看法，还有<b style="color:#fff">文章翻译</b>和<b style="color:#fff">分享</b>。</div><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">相信你可以在这里找到对你有用的<b style="color:#fff">知识</b>和<b style="color:#fff">教程</b>。</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">VenenoSix24</h1><div class="author-info__desc"></div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/VenenoSix24" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/294041003" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来看我的博客鸭~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A%E5%AF%BB%E6%89%BE%E5%AE%8C%E7%BE%8E%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">1.</span> <span class="toc-text">前言：寻找完美的个人网站解决方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87%E4%B8%8E%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">第一步：环境准备与项目初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A8%E8%AE%BA%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8-PNPM%EF%BC%9F"><span class="toc-number">2.1.</span> <span class="toc-text">讨论：为什么推荐使用 PNPM？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E5%87%86%E5%A4%87"><span class="toc-number">2.2.</span> <span class="toc-text">前置准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.3.</span> <span class="toc-text">开始初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-pnpm-%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">2.3.1.</span> <span class="toc-text">安装 pnpm （可选）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%BC%80%E5%A7%8B%E5%AE%89%E8%A3%85-VitePress"><span class="toc-number">2.3.2.</span> <span class="toc-text">接下来开始安装 VitePress</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE%E7%9B%AE%E5%BD%95"><span class="toc-number">2.3.2.1.</span> <span class="toc-text">1. 创建项目目录</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85-VitePress-%E5%92%8C-Vue"><span class="toc-number">2.3.2.2.</span> <span class="toc-text">2. 安装 VitePress 和 Vue</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E8%BF%90%E8%A1%8C%E5%88%9D%E5%A7%8B%E5%8C%96%E5%90%91%E5%AF%BC"><span class="toc-number">2.3.2.3.</span> <span class="toc-text">3. 运行初始化向导</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E7%90%86%E8%A7%A3%E7%94%9F%E6%88%90%E7%9A%84%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-number">2.3.2.4.</span> <span class="toc-text">4. 理解生成的文件结构</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-%E5%90%AF%E5%8A%A8%E5%BC%80%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%81"><span class="toc-number">2.3.2.5.</span> <span class="toc-text">5. 启动开发服务器！</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E6%A0%B8%E5%BF%83%E5%AE%9A%E5%88%B6%EF%BC%9A%E6%89%93%E9%80%A0%E4%BD%A0%E7%9A%84%E4%B8%93%E5%B1%9E%E9%A6%96%E9%A1%B5-docs-index-md"><span class="toc-number">3.</span> <span class="toc-text">第二步：核心定制：打造你的专属首页 (docs&#x2F;index.md)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#index-md-%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="toc-number">3.1.</span> <span class="toc-text">index.md 完整代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90%EF%BC%9A%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9%E6%88%90%E4%BD%A0%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%9F"><span class="toc-number">3.2.</span> <span class="toc-text">代码深度解析：如何修改成你的内容？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%85%A8%E5%B1%80%E9%85%8D%E7%BD%AE-vitepress-config-mts"><span class="toc-number">4.</span> <span class="toc-text">第三步：全局配置 (.vitepress&#x2F;config.mts)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#config-mts-%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="toc-number">4.1.</span> <span class="toc-text">config.mts 完整代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E8%A7%A3%E6%9E%90%E4%B8%8E%E4%BF%AE%E6%94%B9%E6%8C%87%E5%8D%97"><span class="toc-number">4.2.</span> <span class="toc-text">配置解析与修改指南</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E9%83%A8%E7%BD%B2%E4%B8%8A%E7%BA%BF%EF%BC%9A%E8%AE%A9%E4%B8%96%E7%95%8C%E7%9C%8B%E5%88%B0%E4%BD%A0%E7%9A%84%E4%BD%9C%E5%93%81"><span class="toc-number">5.</span> <span class="toc-text">第四步：部署上线：让世界看到你的作品</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD%E4%B8%8E%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="toc-number">6.</span> <span class="toc-text">结语与下一步</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/08/24/edgeone-1/" title="腾讯云 EdgeOne CDN 加速 基础配置教程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/24/7ocaW2EHfjxYd56.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="腾讯云 EdgeOne CDN 加速 基础配置教程"/></a><div class="content"><a class="title" href="/2025/08/24/edgeone-1/" title="腾讯云 EdgeOne CDN 加速 基础配置教程">腾讯云 EdgeOne CDN 加速 基础配置教程</a><time datetime="2025-08-24T11:10:00.000Z" title="发表于 2025-08-24 11:10:00">2025-08-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/20/sp2cf/" title="将 Spaceship 域名托管到 Cloudflare"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/20/QunlcdOxZYgEBms.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="将 Spaceship 域名托管到 Cloudflare"/></a><div class="content"><a class="title" href="/2025/08/20/sp2cf/" title="将 Spaceship 域名托管到 Cloudflare">将 Spaceship 域名托管到 Cloudflare</a><time datetime="2025-08-20T00:18:00.000Z" title="发表于 2025-08-20 00:18:00">2025-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/18/vitepress-3/" title="从零到一，用 VitePress 打造你的个人网站（Frontmatter 篇）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/24/6Uqb34wAlZGRo18.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从零到一，用 VitePress 打造你的个人网站（Frontmatter 篇）"/></a><div class="content"><a class="title" href="/2025/08/18/vitepress-3/" title="从零到一，用 VitePress 打造你的个人网站（Frontmatter 篇）">从零到一，用 VitePress 打造你的个人网站（Frontmatter 篇）</a><time datetime="2025-08-18T16:54:00.000Z" title="发表于 2025-08-18 16:54:00">2025-08-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/18/vitepress-2/" title="从零到一，用 VitePress 打造你的个人网站（页面篇）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/24/6Uqb34wAlZGRo18.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从零到一，用 VitePress 打造你的个人网站（页面篇）"/></a><div class="content"><a class="title" href="/2025/08/18/vitepress-2/" title="从零到一，用 VitePress 打造你的个人网站（页面篇）">从零到一，用 VitePress 打造你的个人网站（页面篇）</a><time datetime="2025-08-18T15:59:00.000Z" title="发表于 2025-08-18 15:59:00">2025-08-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/18/vitepress-1/" title="从零到一，用 VitePress 打造你的个人网站（基础篇）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/24/6Uqb34wAlZGRo18.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从零到一，用 VitePress 打造你的个人网站（基础篇）"/></a><div class="content"><a class="title" href="/2025/08/18/vitepress-1/" title="从零到一，用 VitePress 打造你的个人网站（基础篇）">从零到一，用 VitePress 打造你的个人网站（基础篇）</a><time datetime="2025-08-18T11:49:00.000Z" title="发表于 2025-08-18 11:49:00">2025-08-18</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="/3405395460@qq.com" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://weibo.com/u/6582794675" title="微博"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic.imgdb.cn/item/64bf7c681ddac507ccd68f97.jpg" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/VenenoSix24" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://space.bilibili.com/294041003" title="Bilibili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v7.3.0" title="博客框架为Hexo_v7.3.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v7.3.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2023 - 2026 By <a class="footer-bar-link" href="/" title="VenenoSix24" target="_blank">VenenoSix24</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a><a class="footer-bar-link" href="/null" title="愿平安喜乐">愿平安喜乐</a><a class="footer-bar-link cc" href="/copyright" title="cc协议"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-by-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nc-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nd-line"></i></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">3</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?id=13342783548&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/CDN/" style="font-size: 0.88rem;">CDN<sup>1</sup></a><a href="/tags/Cloudflare/" style="font-size: 0.88rem;">Cloudflare<sup>1</sup></a><a href="/tags/EFI/" style="font-size: 0.88rem;">EFI<sup>2</sup></a><a href="/tags/EdgeOne/" style="font-size: 0.88rem;">EdgeOne<sup>1</sup></a><a href="/tags/First/" style="font-size: 0.88rem;">First<sup>1</sup></a><a href="/tags/Git/" style="font-size: 0.88rem;">Git<sup>2</sup></a><a href="/tags/Github/" style="font-size: 0.88rem;">Github<sup>4</sup></a><a href="/tags/Google/" style="font-size: 0.88rem;">Google<sup>1</sup></a><a href="/tags/Hexo/" style="font-size: 0.88rem;">Hexo<sup>3</sup></a><a href="/tags/Markdown/" style="font-size: 0.88rem;">Markdown<sup>2</sup></a><a href="/tags/Obsidian/" style="font-size: 0.88rem;">Obsidian<sup>2</sup></a><a href="/tags/OpenCore/" style="font-size: 0.88rem;">OpenCore<sup>2</sup></a><a href="/tags/Spaceship/" style="font-size: 0.88rem;">Spaceship<sup>1</sup></a><a href="/tags/VSCode/" style="font-size: 0.88rem;">VSCode<sup>1</sup></a><a href="/tags/VitePress/" style="font-size: 0.88rem;">VitePress<sup>3</sup></a><a href="/tags/macOS/" style="font-size: 0.88rem;">macOS<sup>1</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/" style="font-size: 0.88rem;">个人网站<sup>5</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 0.88rem;">前端<sup>3</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 0.88rem;">域名<sup>1</sup></a><a href="/tags/%E5%B0%8F%E8%AE%B0/" style="font-size: 0.88rem;">小记<sup>1</sup></a><a href="/tags/%E6%88%90%E9%95%BF/" style="font-size: 0.88rem;">成长<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 0.88rem;">教程<sup>16</sup></a><a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 0.88rem;">日常<sup>1</sup></a><a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/" style="font-size: 0.88rem;">编辑器<sup>1</sup></a><a href="/tags/%E9%B8%BF%E8%92%99/" style="font-size: 0.88rem;">鸿蒙<sup>1</sup></a><a href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" style="font-size: 0.88rem;">黑苹果<sup>2</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="13342783548" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.5"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://music.163.com/?from=itab#/playlist?id=13342783548&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("07/24/2023 12:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2023 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 VenenoSix24 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Obsidian 进阶：用 Dataview 和 Templater 打造自动化知识库 | 烟花易逝🎇</title><meta name="keywords" content="教程,Obsidian,Markdown"><meta name="author" content="VenenoSix24"><meta name="copyright" content="VenenoSix24"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Obsidian 进阶：用 Dataview 和 Templater 打造自动化知识库"><meta name="application-name" content="Obsidian 进阶：用 Dataview 和 Templater 打造自动化知识库"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="Obsidian 进阶：用 Dataview 和 Templater 打造自动化知识库"><meta property="og:url" content="http://blog.776624.xyz/2025/08/16/Obsidian-Advanced/index.html"><meta property="og:site_name" content="烟花易逝🎇"><meta property="og:description" content="1. 为什么需要自动化？摆脱重复性工作当您的 Obsidian 笔记数量增多后，可能会遇到以下瓶颈：  创建笔记结构重复：每次写周报、会议纪要或读书笔记，都需要手动输入相同的标题、日期和属性。  索引维护困难：想创建一个“所有项目A的会议纪要”列表，需要手动复制粘贴链接，一旦新增或修改就得手动更新，"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://s2.loli.net/2025/08/16/FkYaEtGQmqC4vhR.jpg"><meta property="article:author" content="VenenoSix24"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://s2.loli.net/2025/08/16/FkYaEtGQmqC4vhR.jpg"><meta name="description" content="1. 为什么需要自动化？摆脱重复性工作当您的 Obsidian 笔记数量增多后，可能会遇到以下瓶颈：  创建笔记结构重复：每次写周报、会议纪要或读书笔记，都需要手动输入相同的标题、日期和属性。  索引维护困难：想创建一个“所有项目A的会议纪要”列表，需要手动复制粘贴链接，一旦新增或修改就得手动更新，"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://blog.776624.xyz/2025/08/16/Obsidian-Advanced/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//static.cloudflareinsights.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/swiper/swiper.min.css" media="print" onload="this.media='all'"><script defer="defer" data-pjax="data-pjax" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;ae5537986eb34394be9af021e5c42dc1&quot;}"></script><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: {"enable":true,"ck":"3FOGt62MnfRMs3Ee","LingQueMonitorID":"3JO52xcDvjCuEqru"},
+  greetingBox: {"enable":true,"default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: {"mode":"both","api":"https://img2color-go.vercel.app/api?img=","cover_change":true},
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"距离上次更新已经过去了","messageNext":"天，文章的内容可能已经过时。"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: VenenoSix24","link":"链接: ","source":"来源: 烟花易逝🎇","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '烟花易逝🎇',
+  title: 'Obsidian 进阶：用 Dataview 和 Templater 打造自动化知识库',
+  postAI: '',
+  pageFillDescription: '1. 为什么需要自动化？摆脱重复性工作, 2. Dataview：将你的知识库变成动态数据库, 2.1 核心理念：为笔记赋予属性, 2.2 Dataview 查询语言（DQL）入门, 2.3 三种核心查询类型详解, 3. Templater：你的智能笔记模板引擎, 3.1 基础配置与使用, 3.2 常用函数与动态命令详解, 3.3 实战案例：创建一个交互式会议纪要模板, 4. 终极合体：Dataview + Templater 自动化工作流, 4.1 实战项目：打造一个全自动的电影追踪系统, ✅ 已看列表 (Watched), ⭐ 五星推荐, 5. 总结与注意事项为什么需要自动化摆脱重复性工作当您的笔记数量增多后可能会遇到以下瓶颈创建笔记结构重复每次写周报会议纪要或读书笔记都需要手动输入相同的标题日期和属性索引维护困难想创建一个所有项目的会议纪要列表需要手动复制粘贴链接一旦新增或修改就得手动更新极易遗漏信息关联孤立笔记写完后就成了孤岛难以从宏观视角发现特定类型如所有待办任务今年读过的所有五星书籍的笔记和这两个社区插件的组合正是解决上述问题的终极方案负责输入自动化它是一个强大的模板引擎能帮您创建结构一致包含动态信息如日期标题的笔记负责输出自动化它是一个查询引擎能将您的整个知识库视为一个数据库根据您设定的条件动态地聚合展示和索引您的笔记本教程将引导您从入门到精通最终将两者结合构建一个真正活起来的知识库将你的知识库变成动态数据库的核心是让您通过查询代码动态地从您的笔记中提取信息并以列表表格等形式展示核心理念为笔记赋予属性要让能够查询首先要让您的笔记可被查询这需要为笔记添加结构化的元数据主要有两种方式在文件最顶部的区域内以键值的格式定义行内字段在笔记正文中使用键值的格式定义这种方式更灵活适合在段落中自然地标记信息状态负责人张三截止日期查询语言入门的查询代码块以开始其语法结构类似于主要由几个关键字组成决定输出的格式指定查询范围例如某个标签某个文件夹或它们的组合如果省略则查询整个仓库设定筛选条件过滤出符合要求的笔记定义排序规则例如按文件创建日期升序或降序三种核心查询类型详解列表查询这是最简单的查询用于列出符合条件的笔记文件名案例列出所有在文件夹下但还未添加标签的笔记表格查询最常用也最强大的查询类型您可以自定义表格的列显示笔记的各种属性案例以表格形式展示所有评分为星的读书笔记并显示作者和阅读状态假设笔记元数据为作者这里的会自动从每篇笔记的元数据中抓取任务查询专门用于聚合您在各个笔记中创建的待办事项案例找出所有笔记中包含标签且未完成的待办事项您需要在笔记中这样写任务完成报告的初稿会自动渲染出任务复选框并链接回原笔记你的智能笔记模板引擎远比自带的核心模板插件强大它允许您在模板中嵌入动态命令甚至是脚本基础配置与使用在社区插件市场安装在的设置中指定一个模板文件夹路径例如将您所有的模板文件都存放在这个文件夹中通过命令面板或快捷键执行来使用模板常用函数与动态命令详解的动态命令通常包裹在或中获取文件名当您从一个名为周报的空文件创建笔记时它会自动将标题填充为周报动态日期和时间可以自定义任何日期格式可以替换为等光标定位模板插入后光标会自动移动到这个命令所在的位置非常适合用于内容主体部分的填写系统交互命令提示框请输入作者这是的强大之处它会弹出一个输入框让您输入信息然后可以将返回的结果用于笔记内容实战案例创建一个交互式会议纪要模板在您的模板文件夹如下创建文件内容如下会议时间与会人员与会人员用逗号分隔会议主题会议主题议程行动项使用效果当您基于此模板创建一个新笔记时它会自动填入当前日期和笔记标题然后连续弹出两个输入框让您输入与会人员和会议主题最后将光标定位在议程部分等待您开始记录终极合体自动化工作流现在我们将两者结合真正实现输入处理输出的全流程自动化实战项目打造一个全自动的电影追踪系统目标通过模板快速记录想看或看过的电影并自动添加元数据通过一个页面自动生成待看列表已看列表和五星推荐等动态索引步骤一创建电影模板在模板文件夹下创建导演评分待看已看是否观影记录电影信息导演我的评分观看状态简评这个模板使用了函数它会弹出选择框让您选择待看或已看并自动写入对应的标签非常高效步骤二创建聚合页面创建一个新的普通笔记命名为并写入以下内容我的电影仪表盘待看列表导演期待分已看列表导演我的评分观看日期五星推荐工作流演示您想记录一部新电影沙丘通过新建笔记模板自动运行依次弹出输入框让您输入导演丹尼斯维伦纽瓦评分状态选择已看并自动记录观看日期笔记创建完成元数据完美无缺您打开无需任何操作已自动将沙丘添加到了已看列表和五星推荐中总结与注意事项通过定义结构化输入和进行动态化输出的组合您可以将这套工作流应用到项目管理文献追踪习惯养成等任何领域注意事项性能在拥有数万篇笔记的超大仓库中复杂的查询可能会有轻微延迟一致性这套系统的核心在于元数据的一致性务必通过来创建笔记以保证等字段的拼写和格式完全统一由简入繁先从简单的和查询开始在实际使用中逐步迭代您的模板和查询需求',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2026-09-12 06:13:08',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 8.1.2"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://pic.imgdb.cn/item/64bf7c681ddac507ccd68f97.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">烟花易逝🎇</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?id=13342783548&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="/img/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="/img/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/CDN/" style="font-size: 1.05rem;">CDN<sup>1</sup></a><a href="/tags/Cloudflare/" style="font-size: 1.05rem;">Cloudflare<sup>1</sup></a><a href="/tags/EFI/" style="font-size: 1.05rem;">EFI<sup>2</sup></a><a href="/tags/EdgeOne/" style="font-size: 1.05rem;">EdgeOne<sup>1</sup></a><a href="/tags/First/" style="font-size: 1.05rem;">First<sup>1</sup></a><a href="/tags/Git/" style="font-size: 1.05rem;">Git<sup>2</sup></a><a href="/tags/Github/" style="font-size: 1.05rem;">Github<sup>4</sup></a><a href="/tags/Google/" style="font-size: 1.05rem;">Google<sup>1</sup></a><a href="/tags/Hexo/" style="font-size: 1.05rem;">Hexo<sup>3</sup></a><a href="/tags/Markdown/" style="font-size: 1.05rem;">Markdown<sup>2</sup></a><a href="/tags/Obsidian/" style="font-size: 1.05rem;">Obsidian<sup>2</sup></a><a href="/tags/OpenCore/" style="font-size: 1.05rem;">OpenCore<sup>2</sup></a><a href="/tags/Spaceship/" style="font-size: 1.05rem;">Spaceship<sup>1</sup></a><a href="/tags/VSCode/" style="font-size: 1.05rem;">VSCode<sup>1</sup></a><a href="/tags/VitePress/" style="font-size: 1.05rem;">VitePress<sup>3</sup></a><a href="/tags/macOS/" style="font-size: 1.05rem;">macOS<sup>1</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/" style="font-size: 1.05rem;">个人网站<sup>5</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.05rem;">前端<sup>3</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 1.05rem;">域名<sup>1</sup></a><a href="/tags/%E5%B0%8F%E8%AE%B0/" style="font-size: 1.05rem;">小记<sup>1</sup></a><a href="/tags/%E6%88%90%E9%95%BF/" style="font-size: 1.05rem;">成长<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 1.05rem;">教程<sup>16</sup></a><a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 1.05rem;">日常<sup>1</sup></a><a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/" style="font-size: 1.05rem;">编辑器<sup>1</sup></a><a href="/tags/%E9%B8%BF%E8%92%99/" style="font-size: 1.05rem;">鸿蒙<sup>1</sup></a><a href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" style="font-size: 1.05rem;">黑苹果<sup>2</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">11</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/02/"><span class="card-archive-list-date">二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">十月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/08/"><span class="card-archive-list-date">八月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">5</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/" itemprop="url">实用教程</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>教程</span></a><a class="article-meta__tags" href="/tags/Obsidian/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Obsidian</span></a><a class="article-meta__tags" href="/tags/Markdown/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Markdown</span></a></span></div></div><h1 class="post-title" itemprop="name headline">Obsidian 进阶：用 Dataview 和 Templater 打造自动化知识库</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-08-16T16:04:00.000Z" title="发表于 2025-08-16 16:04:00">2025-08-16</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2026-09-12T06:13:08.453Z" title="更新于 2026-09-12 06:13:08">2026-09-12</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">2.2k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="Obsidian 进阶：用 Dataview 和 Templater 打造自动化知识库"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为山东"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>山东</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://s2.loli.net/2025/08/16/FkYaEtGQmqC4vhR.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://blog.776624.xyz/2025/08/16/Obsidian-Advanced/"><header><a class="post-meta-categories" href="/categories/%E5%AE%9E%E7%94%A8%E6%95%99%E7%A8%8B/" itemprop="url">实用教程</a><a href="/tags/%E6%95%99%E7%A8%8B/" tabindex="-1" itemprop="url">教程</a><a href="/tags/Obsidian/" tabindex="-1" itemprop="url">Obsidian</a><a href="/tags/Markdown/" tabindex="-1" itemprop="url">Markdown</a><h1 id="CrawlerTitle" itemprop="name headline">Obsidian 进阶：用 Dataview 和 Templater 打造自动化知识库</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">VenenoSix24</span><time itemprop="dateCreated datePublished" datetime="2025-08-16T16:04:00.000Z" title="发表于 2025-08-16 16:04:00">2025-08-16</time><time itemprop="dateCreated datePublished" datetime="2026-09-12T06:13:08.453Z" title="更新于 2026-09-12 06:13:08">2026-09-12</time></header><h2 id="1-为什么需要自动化？摆脱重复性工作"><a href="#1-为什么需要自动化？摆脱重复性工作" class="headerlink" title="1. 为什么需要自动化？摆脱重复性工作"></a>1. 为什么需要自动化？摆脱重复性工作</h2><p>当您的 Obsidian 笔记数量增多后，可能会遇到以下瓶颈：</p>
+<ul>
+<li><p><strong>创建笔记结构重复</strong>：每次写周报、会议纪要或读书笔记，都需要手动输入相同的标题、日期和属性。</p>
+</li>
+<li><p><strong>索引维护困难</strong>：想创建一个“所有项目A的会议纪要”列表，需要手动复制粘贴链接，一旦新增或修改就得手动更新，极易遗漏。</p>
+</li>
+<li><p><strong>信息关联孤立</strong>：笔记写完后就成了孤岛，难以从宏观视角发现特定类型（如“所有待办任务”、“今年读过的所有五星书籍”）的笔记。</p>
+</li>
+</ul>
+<p><strong>Dataview</strong> 和 <strong>Templater</strong> 这两个社区插件的组合，正是解决上述问题的终极方案。</p>
+<ul>
+<li><p><strong>Templater</strong>：负责<strong>输入自动化</strong>。它是一个强大的模板引擎，能帮您创建结构一致、包含动态信息（如日期、标题）的笔记。</p>
+</li>
+<li><p><strong>Dataview</strong>：负责<strong>输出自动化</strong>。它是一个查询引擎，能将您的整个知识库视为一个数据库，根据您设定的条件，动态地聚合、展示和索引您的笔记。</p>
+</li>
+</ul>
+<p>本教程将引导您从入门到精通，最终将两者结合，构建一个真正“活”起来的知识库。</p>
+<h2 id="2-Dataview：将你的知识库变成动态数据库"><a href="#2-Dataview：将你的知识库变成动态数据库" class="headerlink" title="2. Dataview：将你的知识库变成动态数据库"></a>2. Dataview：将你的知识库变成动态数据库</h2><p>Dataview 的核心是让您通过查询代码，动态地从您的笔记中提取信息并以列表、表格等形式展示。</p>
+<h3 id="2-1-核心理念：为笔记赋予“属性”"><a href="#2-1-核心理念：为笔记赋予“属性”" class="headerlink" title="2.1 核心理念：为笔记赋予“属性”"></a>2.1 核心理念：为笔记赋予“属性”</h3><p>要让 Dataview 能够查询，首先要让您的笔记“可被查询”。这需要为笔记添加结构化的元数据（Metadata），主要有两种方式：</p>
+<ol>
+<li><p><strong>YAML Frontmatter</strong>：在文件最顶部的 <code>---</code> 区域内，以 <code>键: 值</code> 的格式定义。</p>
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">type:</span> <span class="string">&quot;Book&quot;</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">&quot;James Clear&quot;</span></span><br><span class="line"><span class="attr">rating:</span> <span class="number">5</span></span><br><span class="line"><span class="attr">status:</span> <span class="string">&quot;read&quot;</span></span><br><span class="line"><span class="attr">tags:</span> [<span class="string">productivity</span>, <span class="string">habits</span>]</span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>行内字段 (Inline Fields)</strong>：在笔记正文中，使用 <code>键:: 值</code> 的格式定义。这种方式更灵活，适合在段落中自然地标记信息。</p>
+ <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="strong">**状态**</span>:: #in-progress</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**负责人**</span>:: [[张三]]</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**截止日期**</span>:: 2025-08-30</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="2-2-Dataview-查询语言（DQL）入门"><a href="#2-2-Dataview-查询语言（DQL）入门" class="headerlink" title="2.2 Dataview 查询语言（DQL）入门"></a>2.2 Dataview 查询语言（DQL）入门</h3><p>Dataview 的查询代码块以 <code>```dataview</code> 开始。其语法结构类似于 SQL，主要由几个关键字组成：</p>
+<ul>
+<li><p><code>LIST</code> | <code>TABLE</code> | <code>TASK</code>：决定输出的格式。</p>
+</li>
+<li><p><code>FROM</code>：指定查询范围（例如某个标签 <code>#book</code>、某个文件夹 <code>&quot;Meetings&quot;</code>、或它们的组合）。如果省略，则查询整个仓库。</p>
+</li>
+<li><p><code>WHERE</code>：设定筛选条件，过滤出符合要求的笔记。</p>
+</li>
+<li><p><code>SORT</code>：定义排序规则（例如按文件创建日期 <code>file.ctime</code> 升序 <code>asc</code> 或降序 <code>desc</code>）。</p>
+</li>
+</ul>
+<h3 id="2-3-三种核心查询类型详解"><a href="#2-3-三种核心查询类型详解" class="headerlink" title="2.3 三种核心查询类型详解"></a>2.3 三种核心查询类型详解</h3><p><strong>1. LIST (列表查询)</strong></p>
+<p>这是最简单的查询，用于列出符合条件的笔记文件名。</p>
+<p><strong>案例</strong>：列出所有在 <code>&quot;Projects&quot;</code> 文件夹下，但还未添加 <code>#done</code> 标签的笔记。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LIST</span><br><span class="line">FROM &quot;Projects&quot;</span><br><span class="line">WHERE !contains(file.tags, &quot;#done&quot;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. TABLE (表格查询)</strong></p>
+<p>最常用也最强大的查询类型。您可以自定义表格的列，显示笔记的各种属性。</p>
+<p><strong>案例</strong>：以表格形式展示所有评分为5星的读书笔记，并显示作者和阅读状态。</p>
+<ul>
+<li>假设笔记元数据为：<code>type: &quot;Book&quot;</code>, <code>author: &quot;作者&quot;</code>, <code>rating: 5</code>, <code>status: &quot;read&quot;</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">TABLE author, rating, status</span><br><span class="line">FROM #book</span><br><span class="line">WHERE rating = 5</span><br><span class="line">SORT file.mtime desc</span><br></pre></td></tr></table></figure>
+
+<p><em>这里的 <code>author</code>, <code>rating</code>, <code>status</code> 会自动从每篇笔记的元数据中抓取。</em></p>
+<p><strong>3. TASK (任务查询)</strong></p>
+<p>专门用于聚合您在各个笔记中创建的待办事项。</p>
+<p><strong>案例</strong>：找出所有笔记中，包含 <code>#project-A</code> 标签且未完成的待办事项。</p>
+<ul>
+<li>您需要在笔记中这样写任务：<code>- [ ] 完成报告的初稿 #project-A</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TASK</span><br><span class="line">FROM #project-A</span><br><span class="line">WHERE !completed</span><br></pre></td></tr></table></figure>
+
+<p><em>Dataview 会自动渲染出任务复选框，并链接回原笔记。</em></p>
+<h2 id="3-Templater：你的智能笔记模板引擎"><a href="#3-Templater：你的智能笔记模板引擎" class="headerlink" title="3. Templater：你的智能笔记模板引擎"></a>3. Templater：你的智能笔记模板引擎</h2><p>Templater 远比 Obsidian 自带的核心模板插件强大，它允许您在模板中嵌入动态命令甚至是 JavaScript 脚本。</p>
+<h3 id="3-1-基础配置与使用"><a href="#3-1-基础配置与使用" class="headerlink" title="3.1 基础配置与使用"></a>3.1 基础配置与使用</h3><ol>
+<li><p>在社区插件市场安装 Templater。</p>
+</li>
+<li><p>在 Templater 的设置中，指定一个“模板文件夹路径”，例如 <code>Templates</code>。</p>
+</li>
+<li><p>将您所有的模板文件都存放在这个文件夹中。</p>
+</li>
+<li><p>通过命令面板或快捷键执行 <code>Templater: Open Insert Template modal</code> 来使用模板。</p>
+</li>
+</ol>
+<h3 id="3-2-常用函数与动态命令详解"><a href="#3-2-常用函数与动态命令详解" class="headerlink" title="3.2 常用函数与动态命令详解"></a>3.2 常用函数与动态命令详解</h3><p>Templater 的动态命令通常包裹在 <code>&lt;%* ... %&gt;</code> 或 <code>&lt;% ... %&gt;</code> 中。</p>
+<ul>
+<li><p><strong>获取文件名</strong>：<code>&lt;% tp.file.title %&gt;</code></p>
+<ul>
+<li>当您从一个名为“2025-08-16-周报”的空文件创建笔记时，它会自动将标题填充为 <code>2025-08-16-周报</code>。</li>
+</ul>
+</li>
+<li><p><strong>动态日期和时间</strong>：<code>&lt;% tp.date.now(&quot;YYYY-MM-DD HH:mm&quot;) %&gt;</code></p>
+<ul>
+<li>可以自定义任何日期格式，<code>now</code> 可以替换为 <code>yesterday</code>, <code>tomorrow</code> 等。</li>
+</ul>
+</li>
+<li><p><strong>光标定位</strong>：<code>&lt;% tp.file.cursor() %&gt;</code></p>
+<ul>
+<li>模板插入后，光标会自动移动到这个命令所在的位置，非常适合用于内容主体部分的填写。</li>
+</ul>
+</li>
+<li><p><strong>系统交互命令（提示框）</strong>：<code>&lt;%* const author = await tp.system.prompt(&quot;请输入作者：&quot;) %&gt;</code></p>
+<ul>
+<li>这是 Templater 的强大之处。它会弹出一个输入框让您输入信息，然后可以将返回的结果用于笔记内容。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-实战案例：创建一个交互式会议纪要模板"><a href="#3-3-实战案例：创建一个交互式会议纪要模板" class="headerlink" title="3.3 实战案例：创建一个交互式会议纪要模板"></a>3.3 实战案例：创建一个交互式会议纪要模板</h3><p>在您的模板文件夹（如 <code>Templates</code>）下，创建 <code>Meeting-Template.md</code> 文件，内容如下：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">tags: meeting</span><br><span class="line">date: &lt;% tp.date.now(&quot;YYYY-MM-DD&quot;) %&gt;</span><br><span class="line"><span class="section">participants: </span></span><br><span class="line"><span class="section">---</span></span><br><span class="line"></span><br><span class="line"><span class="section"># Meeting Notes: &lt;% tp.file.title %&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="strong">**会议时间**</span>: &lt;% tp.date.now(&quot;YYYY-MM-DD HH:mm&quot;) %&gt;</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**与会人员**</span>: &lt;%* await tp.system.prompt(&quot;与会人员 (用逗号分隔)&quot;) %&gt;</span><br><span class="line"><span class="bullet">-</span> <span class="strong">**会议主题**</span>: &lt;%* await tp.system.prompt(&quot;会议主题&quot;) %&gt;</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="section">## 议程</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> &lt;% tp.file.cursor() %&gt;</span><br><span class="line"></span><br><span class="line"><span class="section">## 行动项</span></span><br><span class="line"><span class="bullet">-</span> [ ] </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>使用效果</strong>：当您基于此模板创建一个新笔记时，它会自动填入当前日期和笔记标题，然后连续弹出两个输入框，让您输入“与会人员”和“会议主题”，最后将光标定位在“议程”部分，等待您开始记录。</p>
+<h2 id="4-终极合体：Dataview-Templater-自动化工作流"><a href="#4-终极合体：Dataview-Templater-自动化工作流" class="headerlink" title="4. 终极合体：Dataview + Templater 自动化工作流"></a>4. 终极合体：Dataview + Templater 自动化工作流</h2><p>现在，我们将两者结合，真正实现“输入 → 处理 → 输出”的全流程自动化。</p>
+<h3 id="4-1-实战项目：打造一个全自动的“电影追踪系统”"><a href="#4-1-实战项目：打造一个全自动的“电影追踪系统”" class="headerlink" title="4.1 实战项目：打造一个全自动的“电影追踪系统”"></a>4.1 实战项目：打造一个全自动的“电影追踪系统”</h3><p><strong>目标</strong>：</p>
+<ol>
+<li><p>通过 Templater 模板，快速记录想看或看过的电影，并自动添加元数据。</p>
+</li>
+<li><p>通过一个 Dataview 页面，自动生成“待看列表”、“已看列表”和“五星推荐”等动态索引。</p>
+</li>
+</ol>
+<p><strong>步骤一：创建 Templater 电影模板</strong></p>
+<p>在模板文件夹下创建 <code>Movie-Template.md</code>：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">type: &quot;Movie&quot;</span><br><span class="line">tags: [movie]</span><br><span class="line">director: &lt;%* await tp.system.prompt(&quot;导演&quot;) %&gt;</span><br><span class="line">rating: &lt;%* await tp.system.prompt(&quot;评分 (1-5)&quot;) %&gt;</span><br><span class="line">status: &lt;%* await tp.system.suggester([&quot;待看&quot;, &quot;已看&quot;], [&quot;#tosee&quot;, &quot;#watched&quot;]) %&gt;</span><br><span class="line"><span class="section">date<span class="emphasis">_watched: &lt;%* if (await tp.system.suggester([&quot;是&quot;, &quot;否&quot;], [true, false])) &#123; tR += tp.date.now(&quot;YYYY-MM-DD&quot;) &#125; %&gt;</span></span></span><br><span class="line"><span class="emphasis"><span class="section">---</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section"># 观影记录：&lt;% tp.file.title %&gt;</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">&gt; [!INFO] 电影信息</span></span></span><br><span class="line"><span class="emphasis"><span class="section">&gt; - <span class="strong">**导演**</span>: &lt;% tp.frontmatter.director %&gt;</span></span></span><br><span class="line"><span class="emphasis"><span class="section">&gt; - <span class="strong">**我的评分**</span>: &lt;% tp.frontmatter.rating %&gt; / 5</span></span></span><br><span class="line"><span class="emphasis"><span class="section">&gt; - <span class="strong">**观看状态**</span>: &lt;% tp.frontmatter.status %&gt;</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">## 简评</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br><span class="line"><span class="emphasis"><span class="section">&lt;% tp.file.cursor() %&gt;</span></span></span><br><span class="line"><span class="emphasis"><span class="section"></span></span></span><br></pre></td></tr></table></figure>
+
+<p><em>这个模板使用了 <code>suggester</code> 函数，它会弹出选择框，让您选择“待看”或“已看”，并自动写入对应的标签，非常高效。</em></p>
+<p><strong>步骤二：创建 Dataview 聚合页面</strong></p>
+<p>创建一个新的普通笔记，命名为 <code>My Movie Dashboard.md</code>，并写入以下内容：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## 🎬 我的电影仪表盘</span></span><br><span class="line"></span><br><span class="line"><span class="section">## 🍿 待看列表 (Want to See)</span></span><br><span class="line"><span class="code">```dataview</span></span><br><span class="line"><span class="code">TABLE director as &quot;导演&quot;, rating as &quot;期待分&quot;</span></span><br><span class="line"><span class="code">FROM #movie</span></span><br><span class="line"><span class="code">WHERE status = &quot;#tosee&quot;</span></span><br><span class="line"><span class="code">SORT rating desc</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="✅-已看列表-Watched"><a href="#✅-已看列表-Watched" class="headerlink" title="✅ 已看列表 (Watched)"></a>✅ 已看列表 (Watched)</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">TABLE director as &quot;导演&quot;, rating as &quot;我的评分&quot;, date_watched as &quot;观看日期&quot;</span><br><span class="line">FROM #movie</span><br><span class="line">WHERE status = &quot;#watched&quot;</span><br><span class="line">SORT date_watched desc</span><br></pre></td></tr></table></figure>
+
+<h2 id="⭐-五星推荐"><a href="#⭐-五星推荐" class="headerlink" title="⭐ 五星推荐"></a>⭐ 五星推荐</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LIST</span><br><span class="line">FROM #movie</span><br><span class="line">WHERE rating = 5 AND status = &quot;#watched&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>工作流演示</strong>：</p>
+<ol>
+<li><p>您想记录一部新电影《沙丘》，通过 Templater 新建笔记。</p>
+</li>
+<li><p>模板自动运行，依次弹出输入框让您输入导演“丹尼斯·维伦纽瓦”，评分“5”，状态选择“已看”，并自动记录观看日期。</p>
+</li>
+<li><p>笔记创建完成，元数据完美无缺。</p>
+</li>
+<li><p>您打开 <code>My Movie Dashboard.md</code>，无需任何操作，Dataview 已自动将《沙丘》添加到了“已看列表”和“五星推荐”中。</p>
+</li>
+</ol>
+<h2 id="5-总结与注意事项"><a href="#5-总结与注意事项" class="headerlink" title="5. 总结与注意事项"></a>5. 总结与注意事项</h2><p>通过“Templater 定义结构化输入”和“Dataview 进行动态化输出”的组合，您可以将这套工作流应用到项目管理、文献追踪、习惯养成等任何领域。</p>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li><p><strong>性能</strong>：在拥有数万篇笔记的超大仓库中，复杂的 Dataview 查询可能会有轻微延迟。</p>
+</li>
+<li><p><strong>一致性</strong>：这套系统的核心在于元数据的一致性。务必通过 Templater 来创建笔记，以保证 <code>type</code>, <code>status</code> 等字段的拼写和格式完全统一。</p>
+</li>
+<li><p><strong>由简入繁</strong>：先从简单的 <code>LIST</code> 和 <code>TABLE</code> 查询开始，在实际使用中逐步迭代您的模板和查询需求。</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic.imgdb.cn/item/64bf7c681ddac507ccd68f97.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic.imgdb.cn/item/64bf7c681ddac507ccd68f97.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">VenenoSix24</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://blog.776624.xyz/2025/08/16/Obsidian-Advanced/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://blog.776624.xyz/2025/08/16/Obsidian-Advanced/')">Obsidian 进阶：用 Dataview 和 Templater 打造自动化知识库</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://blog.776624.xyz/2025/08/16/Obsidian-Advanced/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Obsidian 进阶：用 Dataview 和 Templater 打造自动化知识库&amp;url=http://blog.776624.xyz/2025/08/16/Obsidian-Advanced/&amp;pic=https://s2.loli.net/2025/08/16/FkYaEtGQmqC4vhR.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://blog.776624.xyz" target="_blank">烟花易逝🎇</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E6%95%99%E7%A8%8B/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>教程<span class="tagsPageCount">16</span></a><a class="post-meta__box__tags" href="/tags/Obsidian/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Obsidian<span class="tagsPageCount">2</span></a><a class="post-meta__box__tags" href="/tags/Markdown/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Markdown<span class="tagsPageCount">2</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2025/08/24/7ocaW2EHfjxYd56.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/08/16/Git-Base/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/16/v7nGNOYtFdUK2bS.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Git 入门以及常用命令介绍</div></div></a></div><div class="next-post pull-right"><a href="/2025/08/16/Git-Advanced/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/16/v7nGNOYtFdUK2bS.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">团队协作 Git 工作流：理解并实践 GitHub Flow</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/08/16/Obsidian-Base/" title="Obsidian 基础使用教程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/16/FkYaEtGQmqC4vhR.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-16</div><div class="title">Obsidian 基础使用教程</div></div></a></div><div><a href="/2025/08/16/AMD-Hackintosh-EFI/" title="AMD 平台福音：微星 B350M 迫击炮主板黑苹果实践指南 (macOS Sequoia)"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/13/xZ5RYIHwJyMTSoe.png" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-16</div><div class="title">AMD 平台福音：微星 B350M 迫击炮主板黑苹果实践指南 (macOS Sequoia)</div></div></a></div><div><a href="/2025/08/16/Git-Advanced/" title="团队协作 Git 工作流：理解并实践 GitHub Flow"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/16/v7nGNOYtFdUK2bS.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-16</div><div class="title">团队协作 Git 工作流：理解并实践 GitHub Flow</div></div></a></div><div><a href="/2025/08/16/Git-Base/" title="Git 入门以及常用命令介绍"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/16/v7nGNOYtFdUK2bS.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-16</div><div class="title">Git 入门以及常用命令介绍</div></div></a></div><div><a href="/2024/08/16/autodeploy-hexo/" title="使用Github Actins自动化部署Hexo"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2024/08/20/MPGmK7xjlTWyvie.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2024-08-16</div><div class="title">使用Github Actins自动化部署Hexo</div></div></a></div><div><a href="/2025/08/16/VSCode-Base/" title="Visual Studio Code 配置指南"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/16/aIWuwi475LzG62p.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-08-16</div><div class="title">Visual Studio Code 配置指南</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic.imgdb.cn/item/64bf7c681ddac507ccd68f97.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description"><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">这有关于<b style="color:#fff">产品、设计、开发</b>相关的问题和看法，还有<b style="color:#fff">文章翻译</b>和<b style="color:#fff">分享</b>。</div><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">相信你可以在这里找到对你有用的<b style="color:#fff">知识</b>和<b style="color:#fff">教程</b>。</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">VenenoSix24</h1><div class="author-info__desc"></div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/VenenoSix24" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="social-icon faa-parent animated-hover" href="https://space.bilibili.com/294041003" target="_blank" title="BiliBili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来看我的博客鸭~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E8%87%AA%E5%8A%A8%E5%8C%96%EF%BC%9F%E6%91%86%E8%84%B1%E9%87%8D%E5%A4%8D%E6%80%A7%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.</span> <span class="toc-text">1. 为什么需要自动化？摆脱重复性工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Dataview%EF%BC%9A%E5%B0%86%E4%BD%A0%E7%9A%84%E7%9F%A5%E8%AF%86%E5%BA%93%E5%8F%98%E6%88%90%E5%8A%A8%E6%80%81%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">2.</span> <span class="toc-text">2. Dataview：将你的知识库变成动态数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%A0%B8%E5%BF%83%E7%90%86%E5%BF%B5%EF%BC%9A%E4%B8%BA%E7%AC%94%E8%AE%B0%E8%B5%8B%E4%BA%88%E2%80%9C%E5%B1%9E%E6%80%A7%E2%80%9D"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 核心理念：为笔记赋予“属性”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Dataview-%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80%EF%BC%88DQL%EF%BC%89%E5%85%A5%E9%97%A8"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 Dataview 查询语言（DQL）入门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E4%B8%89%E7%A7%8D%E6%A0%B8%E5%BF%83%E6%9F%A5%E8%AF%A2%E7%B1%BB%E5%9E%8B%E8%AF%A6%E8%A7%A3"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 三种核心查询类型详解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Templater%EF%BC%9A%E4%BD%A0%E7%9A%84%E6%99%BA%E8%83%BD%E7%AC%94%E8%AE%B0%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E"><span class="toc-number">3.</span> <span class="toc-text">3. Templater：你的智能笔记模板引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 基础配置与使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8A%A8%E6%80%81%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 常用函数与动态命令详解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E4%BA%A4%E4%BA%92%E5%BC%8F%E4%BC%9A%E8%AE%AE%E7%BA%AA%E8%A6%81%E6%A8%A1%E6%9D%BF"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 实战案例：创建一个交互式会议纪要模板</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%BB%88%E6%9E%81%E5%90%88%E4%BD%93%EF%BC%9ADataview-Templater-%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-number">4.</span> <span class="toc-text">4. 终极合体：Dataview + Templater 自动化工作流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE%EF%BC%9A%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E5%85%A8%E8%87%AA%E5%8A%A8%E7%9A%84%E2%80%9C%E7%94%B5%E5%BD%B1%E8%BF%BD%E8%B8%AA%E7%B3%BB%E7%BB%9F%E2%80%9D"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 实战项目：打造一个全自动的“电影追踪系统”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%85-%E5%B7%B2%E7%9C%8B%E5%88%97%E8%A1%A8-Watched"><span class="toc-number">5.</span> <span class="toc-text">✅ 已看列表 (Watched)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%AD%90-%E4%BA%94%E6%98%9F%E6%8E%A8%E8%8D%90"><span class="toc-number">6.</span> <span class="toc-text">⭐ 五星推荐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%80%BB%E7%BB%93%E4%B8%8E%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">7.</span> <span class="toc-text">5. 总结与注意事项</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/08/24/edgeone-1/" title="腾讯云 EdgeOne CDN 加速 基础配置教程"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/24/7ocaW2EHfjxYd56.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="腾讯云 EdgeOne CDN 加速 基础配置教程"/></a><div class="content"><a class="title" href="/2025/08/24/edgeone-1/" title="腾讯云 EdgeOne CDN 加速 基础配置教程">腾讯云 EdgeOne CDN 加速 基础配置教程</a><time datetime="2025-08-24T11:10:00.000Z" title="发表于 2025-08-24 11:10:00">2025-08-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/20/sp2cf/" title="将 Spaceship 域名托管到 Cloudflare"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/20/QunlcdOxZYgEBms.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="将 Spaceship 域名托管到 Cloudflare"/></a><div class="content"><a class="title" href="/2025/08/20/sp2cf/" title="将 Spaceship 域名托管到 Cloudflare">将 Spaceship 域名托管到 Cloudflare</a><time datetime="2025-08-20T00:18:00.000Z" title="发表于 2025-08-20 00:18:00">2025-08-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/18/vitepress-3/" title="从零到一，用 VitePress 打造你的个人网站（Frontmatter 篇）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/24/6Uqb34wAlZGRo18.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从零到一，用 VitePress 打造你的个人网站（Frontmatter 篇）"/></a><div class="content"><a class="title" href="/2025/08/18/vitepress-3/" title="从零到一，用 VitePress 打造你的个人网站（Frontmatter 篇）">从零到一，用 VitePress 打造你的个人网站（Frontmatter 篇）</a><time datetime="2025-08-18T16:54:00.000Z" title="发表于 2025-08-18 16:54:00">2025-08-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/18/vitepress-2/" title="从零到一，用 VitePress 打造你的个人网站（页面篇）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/24/6Uqb34wAlZGRo18.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从零到一，用 VitePress 打造你的个人网站（页面篇）"/></a><div class="content"><a class="title" href="/2025/08/18/vitepress-2/" title="从零到一，用 VitePress 打造你的个人网站（页面篇）">从零到一，用 VitePress 打造你的个人网站（页面篇）</a><time datetime="2025-08-18T15:59:00.000Z" title="发表于 2025-08-18 15:59:00">2025-08-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/18/vitepress-1/" title="从零到一，用 VitePress 打造你的个人网站（基础篇）"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://s2.loli.net/2025/08/24/6Uqb34wAlZGRo18.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="从零到一，用 VitePress 打造你的个人网站（基础篇）"/></a><div class="content"><a class="title" href="/2025/08/18/vitepress-1/" title="从零到一，用 VitePress 打造你的个人网站（基础篇）">从零到一，用 VitePress 打造你的个人网站（基础篇）</a><time datetime="2025-08-18T11:49:00.000Z" title="发表于 2025-08-18 11:49:00">2025-08-18</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="/3405395460@qq.com" title="email"><i class="anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://weibo.com/u/6582794675" title="微博"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic.imgdb.cn/item/64bf7c681ddac507ccd68f97.jpg" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/VenenoSix24" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://space.bilibili.com/294041003" title="Bilibili"><i class="anzhiyufont anzhiyu-icon-bilibili"></i></a></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" data-title="博客框架为Hexo_v7.3.0" title="博客框架为Hexo_v7.3.0"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Frame-Hexo.svg" alt="博客框架为Hexo_v7.3.0"/></a><a class="github-badge" target="_blank" href="https://blog.anheyu.com/" style="margin-inline:5px" data-title="本站使用AnZhiYu主题" title="本站使用AnZhiYu主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.9/img/Theme-AnZhiYu-2E67D3.svg" alt="本站使用AnZhiYu主题"/></a><a class="github-badge" target="_blank" href="https://github.com/" style="margin-inline:5px" data-title="本站项目由Github托管" title="本站项目由Github托管"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.1.5/img/badge/Source-Github.svg" alt="本站项目由Github托管"/></a><a class="github-badge" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" style="margin-inline:5px" data-title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.2.0/img/badge/Copyright-BY-NC-SA.svg" alt="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"/></a></p></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2023 - 2026 By <a class="footer-bar-link" href="/" title="VenenoSix24" target="_blank">VenenoSix24</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a><a class="footer-bar-link" href="/null" title="愿平安喜乐">愿平安喜乐</a><a class="footer-bar-link cc" href="/copyright" title="cc协议"><i class="anzhiyufont anzhiyu-icon-copyright-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-by-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nc-line"></i><i class="anzhiyufont anzhiyu-icon-creative-commons-nd-line"></i></a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">26</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">3</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/fcircle/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/comments/"><i class="anzhiyufont anzhiyu-icon-envelope faa-tada" style="font-size: 0.9em;"></i><span> 留言板</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/music/?id=13342783548&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/bangumis/"><i class="anzhiyufont anzhiyu-icon-bilibili faa-tada" style="font-size: 0.9em;"></i><span> 追番页</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/air-conditioner/"><i class="anzhiyufont anzhiyu-icon-fan faa-tada" style="font-size: 0.9em;"></i><span> 小空调</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/CDN/" style="font-size: 0.88rem;">CDN<sup>1</sup></a><a href="/tags/Cloudflare/" style="font-size: 0.88rem;">Cloudflare<sup>1</sup></a><a href="/tags/EFI/" style="font-size: 0.88rem;">EFI<sup>2</sup></a><a href="/tags/EdgeOne/" style="font-size: 0.88rem;">EdgeOne<sup>1</sup></a><a href="/tags/First/" style="font-size: 0.88rem;">First<sup>1</sup></a><a href="/tags/Git/" style="font-size: 0.88rem;">Git<sup>2</sup></a><a href="/tags/Github/" style="font-size: 0.88rem;">Github<sup>4</sup></a><a href="/tags/Google/" style="font-size: 0.88rem;">Google<sup>1</sup></a><a href="/tags/Hexo/" style="font-size: 0.88rem;">Hexo<sup>3</sup></a><a href="/tags/Markdown/" style="font-size: 0.88rem;">Markdown<sup>2</sup></a><a href="/tags/Obsidian/" style="font-size: 0.88rem;">Obsidian<sup>2</sup></a><a href="/tags/OpenCore/" style="font-size: 0.88rem;">OpenCore<sup>2</sup></a><a href="/tags/Spaceship/" style="font-size: 0.88rem;">Spaceship<sup>1</sup></a><a href="/tags/VSCode/" style="font-size: 0.88rem;">VSCode<sup>1</sup></a><a href="/tags/VitePress/" style="font-size: 0.88rem;">VitePress<sup>3</sup></a><a href="/tags/macOS/" style="font-size: 0.88rem;">macOS<sup>1</sup></a><a href="/tags/%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99/" style="font-size: 0.88rem;">个人网站<sup>5</sup></a><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 0.88rem;">前端<sup>3</sup></a><a href="/tags/%E5%9F%9F%E5%90%8D/" style="font-size: 0.88rem;">域名<sup>1</sup></a><a href="/tags/%E5%B0%8F%E8%AE%B0/" style="font-size: 0.88rem;">小记<sup>1</sup></a><a href="/tags/%E6%88%90%E9%95%BF/" style="font-size: 0.88rem;">成长<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 0.88rem;">教程<sup>16</sup></a><a href="/tags/%E6%97%A5%E5%B8%B8/" style="font-size: 0.88rem;">日常<sup>1</sup></a><a href="/tags/%E7%BC%96%E8%BE%91%E5%99%A8/" style="font-size: 0.88rem;">编辑器<sup>1</sup></a><a href="/tags/%E9%B8%BF%E8%92%99/" style="font-size: 0.88rem;">鸿蒙<sup>1</sup></a><a href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" style="font-size: 0.88rem;">黑苹果<sup>2</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="13342783548" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.5"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://music.163.com/?from=itab#/playlist?id=13342783548&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("07/24/2023 12:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2023 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 VenenoSix24 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
